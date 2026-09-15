@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../api";
 
 function EditCustomer({ customerId, onBack, onCustomerUpdated }) {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ function EditCustomer({ customerId, onBack, onCustomerUpdated }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/customers/${customerId}`,
+        `${API_URL}/customers/${customerId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -84,7 +85,7 @@ function EditCustomer({ customerId, onBack, onCustomerUpdated }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/customers/${customerId}`,
+        `${API_URL}/customers/${customerId}`,
         {
           method: "PUT",
           headers: {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import ViewProduct from "./ViewProduct";
 import EditProduct from "./EditProduct";
+import { API_URL } from "../api";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -20,10 +21,10 @@ function Products() {
       const token = localStorage.getItem("token");
 
       const url = searchValue
-        ? `http://localhost:5000/products?search=${encodeURIComponent(
+        ? `${API_URL}/products?search=${encodeURIComponent(
             searchValue
           )}`
-        : "http://localhost:5000/products";
+        : `${API_URL}/products`;
 
       const response = await fetch(url, {
         headers: {
@@ -75,7 +76,7 @@ function Products() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/products/${productId}`,
+      `${API_URL}/products/${productId}`,
       {
         method: "DELETE",
         headers: {

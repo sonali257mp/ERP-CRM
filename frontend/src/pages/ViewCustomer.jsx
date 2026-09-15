@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../api";
 
 function ViewCustomer({ customerId, onBack }) {
   const [customer, setCustomer] = useState(null);
@@ -18,7 +19,7 @@ function ViewCustomer({ customerId, onBack }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/customers/${customerId}`,
+        `${API_URL}/customers/${customerId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -44,7 +45,7 @@ function ViewCustomer({ customerId, onBack }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/customers/${customerId}/followups`,
+        `${API_URL}/customers/${customerId}/followups`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -96,7 +97,7 @@ function ViewCustomer({ customerId, onBack }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/customers/${customerId}/followups`,
+        `${API_URL}/customers/${customerId}/followups`,
         {
           method: "POST",
           headers: {

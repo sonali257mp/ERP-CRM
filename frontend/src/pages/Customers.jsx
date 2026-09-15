@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddCustomer from "./AddCustomer";
 import ViewCustomer from "./ViewCustomer";
 import EditCustomer from "./EditCustomer";
+import { API_URL } from "../api";
 
 function Customers() {
   const [customers, setCustomers] = useState([]);
@@ -20,10 +21,10 @@ function Customers() {
       const token = localStorage.getItem("token");
 
       const url = searchValue
-        ? `http://localhost:5000/customers?search=${encodeURIComponent(
+        ? `${API_URL}/customers?search=${encodeURIComponent(
             searchValue
           )}`
-        : "http://localhost:5000/customers";
+        : `${API_URL}/customers`;
 
       const response = await fetch(url, {
         headers: {

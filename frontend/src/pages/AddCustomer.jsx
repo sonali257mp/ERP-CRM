@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../api";
 
 function AddCustomer({ onBack, onCustomerAdded }) {
   const initialFormData = {
@@ -51,7 +52,7 @@ function AddCustomer({ onBack, onCustomerAdded }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/customers",
+        `${API_URL}/customers`,
         {
           method: "POST",
           headers: {

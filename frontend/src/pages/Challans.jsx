@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../api";
 
 function Challans() {
   const [challans, setChallans] = useState([]);
@@ -36,15 +37,15 @@ function Challans() {
         customersResponse,
         productsResponse,
       ] = await Promise.all([
-        fetch("http://localhost:5000/challans", {
+        fetch(`${API_URL}/challans`, {
           headers,
         }),
 
-        fetch("http://localhost:5000/customers", {
+        fetch(`${API_URL}/customers`, {
           headers,
         }),
 
-        fetch("http://localhost:5000/products", {
+        fetch(`${API_URL}/products`, {
           headers,
         }),
       ]);
@@ -210,7 +211,7 @@ function Challans() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/challans",
+        `${API_URL}/challans`,
         {
           method: "POST",
           headers: {
@@ -289,7 +290,7 @@ function Challans() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:5000/challans/${challanId}/cancel`,
+      `${API_URL}/challans/${challanId}/cancel`,
       {
         method: "PUT",
         headers: {

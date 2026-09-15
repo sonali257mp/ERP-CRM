@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../api";
 
 function AddProduct({ onBack, onProductAdded }) {
   const [formData, setFormData] = useState({
@@ -49,7 +50,7 @@ function AddProduct({ onBack, onProductAdded }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/products",
+        `${API_URL}/products`,
         {
           method: "POST",
           headers: {

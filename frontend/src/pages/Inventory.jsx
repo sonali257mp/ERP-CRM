@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../api";
 
 function Inventory() {
   const [products, setProducts] = useState([]);
@@ -36,14 +37,14 @@ function Inventory() {
         movementsResponse,
       ] = await Promise.all([
         fetch(
-          "http://localhost:5000/products",
+          `${API_URL}/products`,
           {
             headers,
           }
         ),
 
         fetch(
-          "http://localhost:5000/stock-movements",
+          `${API_URL}/stock-movements`,
           {
             headers,
           }
@@ -139,7 +140,7 @@ function Inventory() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/stock-movements",
+        `${API_URL}/stock-movements`,
         {
           method: "POST",
 
